@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/home', (req, res) => {
-  res.json({ message: 'Hello from the API!' })
+  res.json({ message: 'Hello from the API!', id: 1 })
 })
 
 app.listen(PORT, () => {
