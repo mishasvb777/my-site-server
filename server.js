@@ -3,7 +3,15 @@ const app = express()
 const cors = require('cors')
 const PORT = process.env.PORT || 3000
 
-app.use(cors({ origin: 'https://lm-test-page.ru/' })) // Разрешить все источники
+const BASE_URL = `http://194.58.114.13:${PORT}`
+
+const corsOptions = {
+  origin: 'http://lm-test-page.ru', // Укажите разрешенный источник
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Укажите разрешенные методы
+  credentials: true, // Разрешить отправку куки
+}
+
+app.use(cors(corsOptions))
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -14,5 +22,5 @@ app.get('/home', (req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`Server is running on https://lm-test-page.ru:${PORT}`)
+  console.log(`Server is running on ${BASE_URL}`)
 })
